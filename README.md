@@ -25,6 +25,7 @@
 ####示例：
 http://api.zhaokang.info/search?key=黄色柔亮的小猫
 #### 返回数据
+```json
 {
     status: 200,
     data: [
@@ -41,6 +42,7 @@ http://api.zhaokang.info/search?key=黄色柔亮的小猫
     "黄色"
     ]
 }
+```
 ###### 注释：search接口采用中文分词技术，要求输入的搜索条件最好常规化，否则会在有数据的情况下，返回也为空
 ###2.萌宠详情接口
 ### 请求参数
@@ -57,6 +59,7 @@ http://api.zhaokang.info/search?key=黄色柔亮的小猫
 ### 示例
 http://api.zhaokang.info/animals?id=2
 #### 返回数据
+```json
 {
     status: 200,
     data: {
@@ -71,3 +74,4 @@ http://api.zhaokang.info/animals?id=2
 },
         msg: "success"
 }
+```
