@@ -23,7 +23,7 @@
 
 >img_url：萌宠图片地址
 
-####示例：
+#### 示例：
 http://api.zhaokang.info/search?key=黄色柔亮的小猫
 #### 返回数据
 ```json
