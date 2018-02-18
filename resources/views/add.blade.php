@@ -127,13 +127,13 @@
 								      <option>母</option>
 								      <option>雌</option>
 								      <option>雄</option>
-								  </div>
-
+								    </select>
+								 </div>
 		                        <div class="form-group">
-		                        	<label for="name_url" class="name_urL">请上传萌宠图片</label>
+		                        	<label for="name_url" class="gender">请上传萌宠图片</label>
 		                        	<input type="file" name="img[]" multiple class="file-box" id="img">
 		                        </div>
-
+						
 		                        <div class="form-group">
 		                            <button type="submit" class="btn btn-default">确认添加</button>
 		                        </div>
