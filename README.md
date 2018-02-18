@@ -24,7 +24,7 @@
 
 >number：萌宠编号
 
->img_url：萌宠图片地址
+>img_url：萌宠图片地址(返回类型：数组)
 
 #### 示例：
 http://api.zhaokang.info/search?key=黄色柔亮的小猫

@@ -41,10 +41,11 @@ class AnimalController extends Controller
     	}
     	$output = [];
     	foreach ($result as $v) {
+            $img_url = explode('@', $v->img_url);
     		array_push($output, [
     			'id' => $v->id,
     			'number' => $v->number,
-    			'img_url' => $v->img_url
+    			'img_url' => $img_url
     		]);
     	}
     	if (empty($output)) {
@@ -76,6 +77,7 @@ class AnimalController extends Controller
     		];
     	}
     	$res = Animals::find($id);
+        $res->img_url = explode('@', $res->img_url);
     	if (empty($res)) {
     		return [
     			'status' => 0,
