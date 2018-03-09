@@ -33,6 +33,10 @@ class AnimalController extends Controller
 
             $temp = Animals::where('color','like','%'.$v.'%')
                                 ->orwhere('kind','like','%'.$v.'%')
+                                ->orwhere('hairy','like','%'.$v.'%')
+                                ->orwhere('pattern','like','%'.$v.'%')
+                                ->orwhere('gender','like','%'.$v.'%')
+                                ->orwhere('kind','like','%'.$v.'%')
                                 ->get();
                 if (!empty($temp)) {
                     array_push($res_temp, $temp);

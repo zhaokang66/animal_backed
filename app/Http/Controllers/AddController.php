@@ -47,7 +47,8 @@ class AddController extends Controller
     	$animals->gender = $request->get('gender');
     	$animals->number = $request->get('number');
     	$animals->hairy = $request->get('hairy');
-    	$animals->pattern = $request->get('pattern');
+        $animals->pattern = $request->get('pattern');
+    	$animals->animal_add = $request->get('animal_add');
     	$result = $animals->save();
     	if (!$result) {
     		return "添加失败";
