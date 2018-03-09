@@ -119,6 +119,11 @@
 		                        <div class="form-group help">
 		                            <input type="text" class="form-control"  placeholder="请输入萌宠花纹" name="pattern" id="pattern">
 		                        </div>
+								
+
+								<div class="form-group help">
+		                            <input type="text" class="form-control"  placeholder="请输入救助站地址" name="animal_add" id="animal_add">
+		                        </div>
 
 								<div class="form-group help gender">
 								    <label for="gender" class="gender">请选择萌宠性别</label>
