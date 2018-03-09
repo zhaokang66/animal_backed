@@ -102,25 +102,21 @@
 								{{ csrf_field() }}
 
 								<div class="form-group help gender">
-								    <select class="form-control" name="gender" id="gender">
+								    <select class="form-control" name="kind" id="kind">
 								      <option>请选择萌宠的种类</option>
-								      <option>猫</option>
-								      <option>狗</option>
+								      <option value="猫">猫</option>
+								      <option value="狗">狗</option>
 								    </select>
 								 </div>
 								
 
 								<div class="form-group">
-		                            <input type="text" class="form-control" id="kind" placeholder="请输入萌宠具体品种（例如哈士奇，暹罗猫）" name="kind" >
+		                            <input type="text" class="form-control" id="species" placeholder="请输入萌宠具体品种（例如哈士奇，暹罗猫）" name="species" >
 
 		                        </div>
 
 		                 
-								
-		                        <div class="form-group help">
-		                            <input type="number" class="form-control"  placeholder="请输入萌宠编号" name="number" id="number">
-		                        </div>
-
+	
 		                        <div class="form-group help">
 		                            <input type="text" class="form-control"  placeholder="请输入萌宠毛色" name="color" id="color">
 		                        </div>
@@ -135,14 +131,17 @@
 								
 
 								<div class="form-group help">
-		                            <input type="text" class="form-control"  placeholder="请输入救助站地址" name="animal_add" id="animal_add">
+									<select name="animal_add" id="animal_add" class="form-control">
+										<option >请选择救助站</option>
+										<option value="1000">1000</option>
+									</select>
 		                        </div>
 
 								<div class="form-group help gender">
 								    <select class="form-control" name="gender" id="gender">
 								    	<option >请选择萌宠性别</option>
-								      	<option>公</option>
-								      	<option>母</option>
+								      	<option value="公">公</option>
+								      	<option value="母">母</option>
 								    </select>
 								 </div>
 		                        <div class="form-group">

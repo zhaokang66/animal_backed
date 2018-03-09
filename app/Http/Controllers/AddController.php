@@ -14,6 +14,7 @@ class AddController extends Controller
     public function store(Request $request)
     {
     	$file = $request->file('img');
+
     	// $file = $_FILES['img'];
     	$number = $request->get('number');
     	// var_dump($file);
@@ -48,7 +49,8 @@ class AddController extends Controller
     	$animals->number = $request->get('number');
     	$animals->hairy = $request->get('hairy');
         $animals->pattern = $request->get('pattern');
-    	$animals->animal_add = $request->get('animal_add');
+        $animals->animal_add = $request->get('animal_add');
+        $animals->species = $request->get('species');
     	$result = $animals->save();
     	if (!$result) {
     		return "添加失败";
