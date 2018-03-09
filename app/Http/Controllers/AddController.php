@@ -41,13 +41,13 @@ class AddController extends Controller
     	}
         // $station_num           //救助站编号
     	$img_url = implode('@', $filePath);
-        $animal_number = 
+        // $animal_number = 
     	$animals = new Animals();
     	$animals->img_url = $img_url;
     	$animals->color = $request->get('color');
     	$animals->kind = $request->get('kind');
     	$animals->gender = $request->get('gender');
-    	$animals->number = 
+    	// $animals->number = 
     	$animals->hairy = $request->get('hairy');
         $animals->pattern = $request->get('pattern');
         $animals->animal_add = $request->get('animal_add');
