@@ -47,7 +47,7 @@ class AddController extends Controller
     	$animals->color = $request->get('color');
     	$animals->kind = $request->get('kind');
     	$animals->gender = $request->get('gender');
-    	// $animals->number = 
+    	$animals->number = rand(1000,9999); 
     	$animals->hairy = $request->get('hairy');
         $animals->pattern = $request->get('pattern');
         $animals->animal_add = $request->get('animal_add');
