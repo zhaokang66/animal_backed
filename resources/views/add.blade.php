@@ -100,16 +100,29 @@
 		                    <form class="form-horizontal" enctype="multipart/form-data" method="post" action="{{url('/insert')}}" onsubmit="return validata();">
 		                        <span class="heading">添加萌宠信息</span>
 								{{ csrf_field() }}
-		                        <div class="form-group">
-		                            <input type="text" class="form-control" id="kind" placeholder="请输入萌宠种类" name="kind" >
+
+								<div class="form-group help gender">
+								    <select class="form-control" name="gender" id="gender">
+								      <option>请选择萌宠的种类</option>
+								      <option>猫</option>
+								      <option>狗</option>
+								    </select>
+								 </div>
+								
+
+								<div class="form-group">
+		                            <input type="text" class="form-control" id="kind" placeholder="请输入萌宠具体品种（例如哈士奇，暹罗猫）" name="kind" >
+
 		                        </div>
+
+		                 
 								
 		                        <div class="form-group help">
 		                            <input type="number" class="form-control"  placeholder="请输入萌宠编号" name="number" id="number">
 		                        </div>
 
 		                        <div class="form-group help">
-		                            <input type="text" class="form-control"  placeholder="请输入萌宠颜色" name="color" id="color">
+		                            <input type="text" class="form-control"  placeholder="请输入萌宠毛色" name="color" id="color">
 		                        </div>
 		                        
 		                        <div class="form-group help">
@@ -126,12 +139,10 @@
 		                        </div>
 
 								<div class="form-group help gender">
-								    <label for="gender" class="gender">请选择萌宠性别</label>
 								    <select class="form-control" name="gender" id="gender">
-								      <option>公</option>
-								      <option>母</option>
-								      <option>雌</option>
-								      <option>雄</option>
+								    	<option >请选择萌宠性别</option>
+								      	<option>公</option>
+								      	<option>母</option>
 								    </select>
 								 </div>
 		                        <div class="form-group">
@@ -155,10 +166,16 @@
 			var hairy = get('hairy');
 			var number = get('number');
 			var pattern = get('pattern');
+			var animal_add  = get('animal_add')；
+			var gender = get('gender');
 			var img = get('img');
-			if (trim(kind.value)==null || trim(kind.value)=='') {
+			if (trim(kind.value) == "请选择萌宠的种类") {
 				alert("萌宠种类不能为空");
 				kind.focus();
+				return false;
+			}
+			if (trim(gender.value)=='请选择萌宠性别') {
+				alert("萌宠性别不能为空");
 				return false;
 			}
 			if (trim(color.value)==null || trim(color.value)=='') {
@@ -183,6 +200,10 @@
 			}
 			if (trim(img.value)==null || trim(img.value)=='') {
 				alert("萌宠图片不能为空");
+				return false;
+			}
+			if (trim(animal_add.value)==null || trim(animal_add.value)=='') {
+				alert("救助站地址不能为空");
 				return false;
 			}
 			return true;
