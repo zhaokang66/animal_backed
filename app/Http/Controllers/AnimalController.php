@@ -17,29 +17,60 @@ class AnimalController extends Controller
     			'msg'     =>  '参数不能为空' 
     		];
     	}
-    	$arr_key = jieba($key);
-    	$count = count($arr_key);
-    	$res = [];
+        $arr_key = []; 
     	$res_temp = [];
-    
-    
-    	for($i=0;$i<$count;$i++) {
-    		$temp = Animals::where('color','like','%'.$arr_key[$i].'%')
-    						->orwhere('kind','like','%'.$arr_key[$i].'%')
-    						->get();
-    		array_push($res_temp, $temp);
-    	}
-    	for($i=0;$i<count($res_temp);$i++) {
-			for($j=0;$j<count($res_temp[$i]);$j++) {
-				array_push($res, $res_temp[$i][$j]);
-			}	    			
-    	}
-    	$unique_arr = array_unique ($res); 
-    	$result =  array_diff_assoc ( $res, $unique_arr );
+
+        $length = mb_strlen($key,'utf8');
+        $array = [];
+        for($i=0;$i<$length;$i++) {
+            $array[] = mb_substr($key, $i, 1, 'utf-8');
+        }
+        $fenci = jieba($key);
+        foreach ($fenci as $val) {
+            array_push($array, $val);
+        }
+        foreach ($array as $v) {
+
+            $temp = Animals::where('color','like','%'.$v.'%')
+                                ->orwhere('kind','like','%'.$v.'%')
+                                ->get();
+                if (!empty($temp)) {
+                    array_push($res_temp, $temp);
+                }
+        }
+        $res = [];
+        foreach ($res_temp as $value) {
+            foreach ($value as $v) {
+                array_push($res, $v);
+            }
+        }
+        $arr_id = [];
+         for($i=0;$i<count($res);$i++) {
+            for($j=$i+1;$j<count($res);$j++) {
+                if($i==(count($res)-1)){
+                    break;    
+                }
+                if ($res[$i]['id'] == $res[$j]['id']) {
+                    $arr_id[$res[$i]['id']] = $res[$i]['id'];
+                }
+            }
+         }
+        // $unique_arr = array_unique ( $res ); 
+    // 获取重复数据的数组 
+        // $result = array_diff_assoc ( $res, $unique_arr );
+
+        // return $repeat_arr;
+        $result = [];
+        if (!empty($arr_id)) {
+            foreach ($arr_id as $value) {
+                $res_temp =Animals::where('id',$value)->first();
+                array_push($result, $res_temp);
+            }
+        }
     	if (empty($result)) {
     		$result = $res;
     	}
-    	$output = [];
+        $output = [];                                                                        
     	foreach ($result as $v) {
             $img_url = explode('@', $v->img_url);
     		array_push($output, [
@@ -53,7 +84,7 @@ class AnimalController extends Controller
     			'status'   => 0,
     			'data'     => array(),
     			'msg'      => '查询结果为空',
-    			'condition'=> $arr_key
+    			'condition'=> $array
     		];
     	}
     	
@@ -61,7 +92,7 @@ class AnimalController extends Controller
     			'status'   => 200,
     			'data'     => $output,
     			'msg'      => 'success',
-    			'condition'=> $arr_key
+    			'condition'=> $array
     		];
     }
 
