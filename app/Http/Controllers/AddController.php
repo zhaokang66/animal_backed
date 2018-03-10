@@ -14,9 +14,13 @@ class AddController extends Controller
     public function store(Request $request)
     {
     	$file = $request->file('img');
-    	// $animal_add = $request->get('animal_add');//救助站编号
+    	$animal_add = $request->get('animal_add');//救助站编号
         //先拼接编号
-        $number = rand(1000,9999); 
+        $id = Animals::orderBy('id','desc')->take(1)->get(['number']);
+        $last_number = $id[0]['number'];
+        $numberLastFour = substr($last_number, 3)+1;
+        $number = $animal_add.$numberLastFour;
+        return $number;
     	mkdir("upload/".$number,0777,true);
     	$filePath = [];
     	foreach ($file as $key => $value) {
