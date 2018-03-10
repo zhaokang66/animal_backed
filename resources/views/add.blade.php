@@ -133,7 +133,7 @@
 								<div class="form-group help">
 									<select name="animal_add" id="animal_add" class="form-control">
 										<option >请选择救助站</option>
-										<option value="001">烟台xxx救助站</option>
+										<option value="101">烟台xxx救助站</option>
 									</select>
 		                        </div>
 
