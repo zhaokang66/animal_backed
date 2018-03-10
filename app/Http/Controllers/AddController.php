@@ -14,12 +14,9 @@ class AddController extends Controller
     public function store(Request $request)
     {
     	$file = $request->file('img');
-
-    	// $file = $_FILES['img'];
-    	$number = $request->get('animal_add');
-    	// var_dump($file);
-    	// die();
-    	//图片上传
+    	// $animal_add = $request->get('animal_add');//救助站编号
+        //先拼接编号
+        $number = rand(1000,9999); 
     	mkdir("upload/".$number,0777,true);
     	$filePath = [];
     	foreach ($file as $key => $value) {
@@ -35,7 +32,7 @@ class AddController extends Controller
     			$extension  =$value->getClientOriginalExtension();
     			$fileName = date('YmdHis').mt_rand(100,999).'.'.$extension;
     			$value->move(public_path()."/".$destinationPath,$fileName);
-    			$filePath[] = $destinationPath.'/'.$fileName;
+    			$filePath[] = "https://api.zhaokang.info/".$destinationPath.'/'.$fileName;
     			
     		}
     	}
@@ -47,7 +44,7 @@ class AddController extends Controller
     	$animals->color = $request->get('color');
     	$animals->kind = $request->get('kind');
     	$animals->gender = $request->get('gender');
-    	$animals->number = rand(1000,9999); 
+    	$animals->number = $number;
     	$animals->hairy = $request->get('hairy');
         $animals->pattern = $request->get('pattern');
         $animals->animal_add = $request->get('animal_add');
