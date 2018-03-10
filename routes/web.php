@@ -18,3 +18,4 @@ Route::get('/search','AnimalController@index');
 Route::get('/animals','AnimalController@animalinfo');
 Route::get('/add','AddController@index');
 Route::post('/insert','AddController@store');
+Route::get('/like','LikeController@store');
