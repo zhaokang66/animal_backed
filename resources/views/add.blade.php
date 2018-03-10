@@ -165,7 +165,7 @@
 			var hairy = get('hairy');
 			var number = get('number');
 			var pattern = get('pattern');
-			var animal_add  = get('animal_add')；
+			var animal_add  = get('animal_add');
 			var gender = get('gender');
 			var img = get('img');
 			if (trim(kind.value) == "请选择萌宠的种类") {

@@ -37,6 +37,7 @@ class AnimalController extends Controller
                                 ->orwhere('pattern','like','%'.$v.'%')
                                 ->orwhere('gender','like','%'.$v.'%')
                                 ->orwhere('kind','like','%'.$v.'%')
+                                ->orwhere('species','like','%'.$v.'%')
                                 ->get();
                 if (!empty($temp)) {
                     array_push($res_temp, $temp);
