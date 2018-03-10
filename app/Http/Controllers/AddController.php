@@ -20,7 +20,6 @@ class AddController extends Controller
         $last_number = $id[0]['number'];
         $numberLastFour = substr($last_number, 3)+1;
         $number = $animal_add.$numberLastFour;
-        return $number;
     	mkdir("upload/".$number,0777,true);
     	$filePath = [];
     	foreach ($file as $key => $value) {
